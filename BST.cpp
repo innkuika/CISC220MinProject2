@@ -10,6 +10,8 @@ using namespace std;
 TNode *remove(string s);
 TNode *removeNoKids(TNode *tmp);
 TNode *removeOneKids(TNode *tmp, bool leftFlag);
+TNode *find(TNode* n,string s);
+bool hasNode(string s);
 
 int main()
 {
@@ -25,6 +27,34 @@ bool insert(string s)
 TNode *find(string s)
 {
     if
+}
+
+TNode *find(TNode* n,string s)
+{
+   if(n-> data == s){
+       return root;
+   }if(n->val < val){
+       if(n-> right != NULL)
+       return find(n->right, s);
+   }
+    if(n-> val > val){
+        if(n-> left != NULL)
+        return find(n->left, s);
+    }
+    bool hasNode(s);
+    return NULL;
+}
+
+bool hasNode(string s)
+{
+    hasNode=false;
+    if (root->data == s){
+        hasNode = true;
+        cout << "the node holding " << s << endl;
+    }else{
+        return hasNode;
+    }
+
 }
 
 void printTreeIO(TNode* n)
