@@ -91,18 +91,18 @@ TNode *removeOneKids(TNode *tmp, bool leftFlag)
     leftFlag = true;
     if(tmp->left == nullptr && tmp->right != nullptr)
     {
-        node *temp = root;
+        node *tmp = root;
         root = root->left;
-        delete temp;
-        temp = NULL;
+        delete tmp;
+        tmp = NULL;
     }
     else if(tmp->left != nullptr && tmp->right == nullptr)
     {
         leftFlag = true;
-        node *temp = root;
+        node *tmp = root;
         root = root->right;
-        delete temp;
-        temp = NULL;
+        delete tmp;
+        tmp = NULL;
     }
     return ;
 }
