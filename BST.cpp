@@ -11,7 +11,7 @@ TNode *remove(string s);
 TNode *removeNoKids(TNode *tmp);
 TNode *removeOneKids(TNode *tmp, bool leftFlag);
 TNode *find(TNode* n,string s);
-bool hasNode(string s);
+
 
 int main()
 {
@@ -32,7 +32,8 @@ TNode *find(string s)
 TNode *find(TNode* n,string s)
 {
    if(n-> data == s){
-       return root;
+	   cout << "the node holding " << s << endl;
+       return n;
    }if(n->val < val){
        if(n-> right != NULL)
        return find(n->right, s);
@@ -41,19 +42,9 @@ TNode *find(TNode* n,string s)
         if(n-> left != NULL)
         return find(n->left, s);
     }
-    bool hasNode(s);
     return NULL;
 }
 
-bool hasNode(string s)
-{
-    hasNode=false;
-    if (root->data == s){
-        hasNode = true;
-        cout << "the node holding " << s << endl;
-    }else{
-        return hasNode;
-    }
 
 }
 
