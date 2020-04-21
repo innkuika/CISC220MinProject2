@@ -81,35 +81,44 @@ int main() {
 	return 0;
 }
 
-bool insert(string s)
-{
+bool insert(string s) {
 	InsertS = false;
 	if (n->data == s) {
+		InsertS = true;
 		return InsertS;
 	}
-	if (n->val < val) {
-		n = n->
+	if (s < n->data) {
+		n = n->left;
+		if (n->left != nullptr || n->right != nullptr) {
+			return insert(s);
+		} else {
+			n = s;
+		}
 	}
-	if (n->val > val) {
-		if (n->left != NULL)
-			return insert(n->left, s);
+	if (s > n->data) {
+		n = n->right;
+		if (n->left != nullptr || n->right != nullptr) {
+			return insert(s);
+		} else {
+			n = s;
+		}
 	}
-	return InsertS
-
+	return InsertS;
 }
 
-TNode *find(TNode* n,string s)
-{
-	if(n-> data == s) {
+
+TNode* find(TNode *n, string s) {
+	if (n->data == s) {
 		cout << "the node holding " << s << endl;
 		return n;
-	}if(n->data < data) {
-		if(n-> right != NULL)
-		return find(n->right, s);
 	}
-	if(n->data > data) {
-		if(n-> left != NULL)
-		return find(n->left, s);
+	if (n->data < data) {
+		if (n->right != NULL)
+			return find(n->right, s);
+	}
+	if (n->data > data) {
+		if (n->left != NULL)
+			return find(n->left, s);
 	}
 	return NULL;
 }
