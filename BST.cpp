@@ -3,14 +3,80 @@
 using namespace std;
 
 
-//void printTreeIO(TNode* n);
-//void printTreePre(TNode* n);
-//void printTreePost(TNode* n);
-
-TNode *remove(string s);
-TNode *removeNoKids(TNode *tmp);
-TNode *removeOneKids(TNode *tmp, bool leftFlag);
+bool insert(String s);
+/* Parameter: string
+ *
+ * Return: boolean.
+ *
+ * this method takes as an input parameter a string (which will go
+ * into the phrase field of the data when a node is created to be inserted) and returns
+ * true if the data is inserted successfully, false otherwise.
+ */
 TNode *find(TNode* n,string s);
+/* Parameter:a string pointer, string
+ *
+ * Return: a string pointer.
+ *
+ * finds whether s is in the phrase part of the data in the
+ * tree,and, if it is, returns the node holding s. Otherwise it returns NULL.
+ */
+void printTreeIO(TNode* n);
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in order
+ */
+void printTreePre(TNode* n);
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in pre-order.
+ */
+void printTreePost(TNode* n);
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in post-order.
+ */
+TNode *remove(string s);
+/* Parameter:a string pointer
+ *
+ * Return: a string pointer.
+ *
+ * this method removes a node from the tree, and returns
+ * a string pointer. This function contains three ways to
+ * remove the node which has no children, one child, two children
+ */
+TNode *removeNoKids(TNode *tmp);
+/* Parameter:a string pointer
+ *
+ * Return: a string pointer.
+ *
+ * removing a node with no children.
+ */
+TNode *removeOneKids(TNode *tmp, bool leftFlag);
+/* Parameter:a string pointer, a boolean
+
+ *
+ * Return: a string pointer.
+ *
+ * for removing a node with one child, with the leftFlag indicating
+ * whether the node’s child is either the left child or the right child.
+ */
+void setHeight(TNode *n);
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * This method sets the heights of the nodes in a tree.
+ * Once a node is inserted, only the node’s ancestors can have their height changed.
+ * Thus you should set the height of the node being inserted (to 1) and then adjust the
+ * heights of the node’s parent, grandparent, etc. up until either the height of the
+ * node doesn’t change or you hit the root.
+ */
 
 
 int main()
@@ -20,6 +86,7 @@ int main()
 
 
 bool insert(string s)
+
 {
 
 }
