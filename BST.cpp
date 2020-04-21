@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool insert(string s);
+bool BST::insert(string s);
 /* Parameter: string
  *
  * Return: boolean.
@@ -12,7 +12,7 @@ bool insert(string s);
  * into the phrase field of the data when a node is created to be inserted) and returns
  * true if the data is inserted successfully, false otherwise.
  */
-TNode* find(TNode *n, string s);
+TNode* BST::find(TNode *n, string s);
 /* Parameter:a string pointer, string
  *
  * Return: a string pointer.
@@ -20,28 +20,28 @@ TNode* find(TNode *n, string s);
  * finds whether s is in the phrase part of the data in the
  * tree,and, if it is, returns the node holding s. Otherwise it returns NULL.
  */
-void printTreeIO(TNode *n);
+void BST::printTreeIO(TNode *n);
 /* Parameter:a string pointer
  *
  * Return: None.
  *
  * prints out the data in the tree in order
  */
-void printTreePre(TNode *n);
+void BST::printTreePre(TNode *n);
 /* Parameter:a string pointer
  *
  * Return: None.
  *
  * prints out the data in the tree in pre-order.
  */
-void printTreePost(TNode *n);
+void BST::printTreePost(TNode *n);
 /* Parameter:a string pointer
  *
  * Return: None.
  *
  * prints out the data in the tree in post-order.
  */
-TNode* remove(string s);
+TNode* BST::remove(string s);
 /* Parameter:a string pointer
  *
  * Return: a string pointer.
@@ -50,14 +50,14 @@ TNode* remove(string s);
  * a string pointer. This function contains three ways to
  * remove the node which has no children, one child, two children
  */
-TNode* removeNoKids(TNode *tmp);
+TNode* BST::removeNoKids(TNode *tmp);
 /* Parameter:a string pointer
  *
  * Return: a string pointer.
  *
  * removing a node with no children.
  */
-TNode* removeOneKids(TNode *tmp, bool leftFlag);
+TNode* BST::removeOneKids(TNode *tmp, bool leftFlag);
 /* Parameter:a string pointer, a boolean
 
  *
@@ -66,7 +66,7 @@ TNode* removeOneKids(TNode *tmp, bool leftFlag);
  * for removing a node with one child, with the leftFlag indicating
  * whether the node’s child is either the left child or the right child.
  */
-void setHeight(TNode *n);
+void BST::setHeight(TNode *n);
 /* Parameter:a string pointer
  *
  * Return: None.
