@@ -106,7 +106,6 @@ bool insert(string s) {
 	return InsertS;
 }
 
-
 TNode* find(TNode *n, string s) {
 	if (n->data == s) {
 		cout << "the node holding " << s << endl;
@@ -126,63 +125,66 @@ TNode* find(TNode *n, string s) {
 }
 
 void printTreeIO(TNode *n) {
-if (n == NULL) {
-	return;
-} else {
-	printTreeIO(n->left);
-	n->printNode();
-	printTreeIO(n->right);
-}
+	if (n == NULL) {
+		return;
+	} else {
+		printTreeIO(n->left);
+		n->printNode();
+		printTreeIO(n->right);
+	}
 }
 
 void printTreePre(TNode *n) {
-if (n == NULL) {
-	return;
-} else {
-	n->printNode();
-	printTreeIO(n->left);
-	printTreeIO(n->right);
-}
+	if (n == NULL) {
+		return;
+	} else {
+		n->printNode();
+		printTreeIO(n->left);
+		printTreeIO(n->right);
+	}
 }
 
 void printTreePost(TNode *n) {
-if (n == NULL) {
-	return;
-} else {
-	printTreeIO(n->left);
-	printTreeIO(n->right);
-	n->printNode();
-}
-}
-
-TNode* remove(string s) {
-if (tmp->left == nullptr && tmp->right == nullptr) {
-	*removeNoKids(TNode * tmp);
-} else if (tmp->left == nullptr && tmp->right != nullptr) {
-*removeOneKids(TNode *tmp, bool leftFlag);
-} else if (tmp->left != nullptr && tmp->right == nullptr) {
-*removeOneKids(TNode *tmp, bool leftFlag);
-}
+	if (n == NULL) {
+		return;
+	} else {
+		printTreeIO(n->left);
+		printTreeIO(n->right);
+		n->printNode();
+	}
 }
 
-TNode* removeNoKids(TNode *tmp) {
-delete tmp;
-return *removeNoKids;
+TNode* remove(string s)
+{
+	if (tmp->left == nullptr && tmp->right == nullptr) {
+		*removeNoKids(TNode * tmp);
+	} else if (tmp->left == nullptr && tmp->right != nullptr) {
+		*removeOneKids(TNode *tmp, bool leftFlag);
+	} else if (tmp->left != nullptr && tmp->right == nullptr) {
+	*removeOneKids(TNode *tmp, bool leftFlag);
+	}
 }
 
-TNode* removeOneKids(TNode *tmp, bool leftFlag) {
-leftFlag = true;
-if (tmp->left == nullptr && tmp->right != nullptr) {
-leftFlag = false;
-node *tmp = root;
-root = root->left;
-delete tmp;
-tmp = NULL;
-} else if (tmp->left != nullptr && tmp->right == nullptr) {
-node *tmp = root;
-root = root->right;
-delete tmp;
-tmp = NULL;
+TNode* removeNoKids(TNode *tmp)
+{
+	delete tmp;
+	return *removeNoKids;
 }
-return;
+
+TNode* removeOneKids(TNode *tmp, bool leftFlag)
+{
+	leftFlag = true;
+	if (tmp->left == nullptr && tmp->right != nullptr) {
+		leftFlag = false;
+		node *tmp = root;
+		root = root->left;
+		delete tmp;
+		tmp = NULL;
+	} else if (tmp->left != nullptr && tmp->right == nullptr) {
+		node *tmp = root;
+		root = root->right;
+		delete tmp;
+		tmp = NULL;
+	}
+	return n;
 }
