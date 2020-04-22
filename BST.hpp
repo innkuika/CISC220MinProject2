@@ -18,7 +18,7 @@ public:
 	BST(string s);
 	bool insert(string s);
 	TNode *find(string s);
-	TNode* BST::recursiveFind(TNode *n,string s);
+	TNode* recursiveFind(TNode *n,string s);
 	void printTreeIO();
 	void printTreeIO(TNode *n);
 	void printTreePre();
@@ -29,6 +29,7 @@ public:
 	void clearTree(TNode *tmp);
 	TNode *removeNoKids(TNode *tmp);
 	TNode *removeOneKid(TNode *tmp, bool leftFlag);
+	TNode *removeTwoKids(TNode *tmp);
 	TNode *remove(string s);
 	void setHeight(TNode *n);
 };

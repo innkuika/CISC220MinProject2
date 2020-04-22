@@ -248,33 +248,19 @@ TNode *BST::remove(string s)
 TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
 {
 	TNode *kid = leftFlag ? tmp->left : tmp->right;
-	TNode *parent = tmp->printNode;
+	TNode *parent = tmp->parent;
 
 	kid->parent = parent;
 	parent->left == tmp ? parent->left = kid : parent->right = kid;
 
-	
-
-	// if (tmp->left == nullptr && tmp->right != nullptr) {
-	// 	leftFlag = false;
-	// 	TNode *tmp = root;
-	// 	root = root->left;
-	// 	delete tmp;
-	// 	tmp = NULL;
-	// } else if (tmp->left != nullptr && tmp->right == nullptr) {
-	// 	TNode *tmp = root;
-	// 	root = root->right;
-	// 	delete tmp;
-	// 	tmp = NULL;
-	// }
 	return tmp;
 }
 
 TNode *BST::removeNoKids(TNode *tmp)
 {
-	tmp->parent->left = NULL;
-	tmp->parent->right = NULL;
-	delete tmp;
+	TNode *parent = tmp->parent;
+	parent->left == tmp ? parent->left = NULL : parent->right = NULL;
+
 	return tmp;
 }
 
