@@ -273,22 +273,21 @@ TNode *BST::removeNoKids(TNode *tmp)
 
 TNode *BST::removeTwoKids(TNode *tmp)
 {
-	/*
-	TNode *Node2Kids = new TNode(s);
-	tmp = tmp->left;
-	while(tmp->right == nullptr){
-		tmp = tmp->right;
-	}
-	Node2Kids = tmp;
-	removeNoKids(tmp);
 
-	Node2Kids->left = tmp->left;
-	Node2Kids->right = tmp->right;
-	Node2Kids->parent = tmp->parsents;
-	Node2Kids->height = setHeight(Node2Kids);
-	Node2Kids->data-phrase = tmp->data->phrase;
-	*/
-	return tmp;
+    TNode *Node2Kids = new TNode();
+    tmp = tmp->left;
+    while(tmp->right == nullptr){
+        tmp = tmp->right;
+    }
+    Node2Kids = tmp;
+    removeNoKids(tmp);
+    Node2Kids->left = tmp->left;
+    Node2Kids->right = tmp->right;
+    Node2Kids->parent = tmp->parent;
+    Node2Kids->height = BST::calcHeight(Node2Kids);
+    Node2Kids->data->phrase = tmp->data->phrase;
+
+    return tmp;
 }
 
 // TNode *BST::find(TNode *n, string s);
