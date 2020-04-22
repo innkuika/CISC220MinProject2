@@ -22,15 +22,15 @@ int main() {
 	tree->printTreePost();
 	tree->clearTree();
 	cout <<"************************************" << endl;
-	// string arr3[] = {"i","was","contemplating","the","immortal","words","of","socrates","who","said,","i","drank","what"};
-	// for (int i = 0; i < 13; i++) {
-	// 	cout << arr3[i]<<", ";
-	// 	tree->insert(arr3[i]);
-	// }
-	// cout << endl;
-	// tree->printTreePre();
-	// tree->printTreeIO();
-	// tree->printTreePost();
+	string arr3[] = {"i","was","contemplating","the","immortal","words","of","socrates","who","said,","i","drank","what"};
+	for (int i = 0; i < 13; i++) {
+		cout << arr3[i]<<", ";
+		tree->insert(arr3[i]);
+	}
+	cout << endl;
+	tree->printTreePre();
+	tree->printTreeIO();
+	tree->printTreePost();
 	// cout << endl<<"REMOVING DRANK" << endl;
 	// tree->remove("drank");
 	// tree->printTreePre();

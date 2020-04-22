@@ -12,7 +12,6 @@ BST::BST(string s)
 	root = new TNode(s);
 }
 
-
 void BST::clearTree()
 {
 	if (root == NULL)
@@ -61,10 +60,14 @@ void BST::setHeight(TNode *n)
 	}
 }
 
-void BST::printTreePre(TNode *n) {
-	if (n == NULL) {
+void BST::printTreePre(TNode *n)
+{
+	if (n == NULL)
+	{
 		return;
-	} else {
+	}
+	else
+	{
 		n->printNode();
 		printTreePre(n->left);
 		printTreePre(n->right);
@@ -98,13 +101,14 @@ bool BST::insert(string s)
 	bool inserted = false;
 	TNode *tmp = root;
 
-	if(root == NULL){
+	if (root == NULL)
+	{
 		root = new TNode(s);
 		setHeight(root);
 		inserted = true;
 		return inserted;
 	}
-	
+
 	while (true)
 	{
 		if (s > tmp->data->phrase && tmp->right != NULL)
@@ -154,10 +158,14 @@ void BST::printTreeIO()
 	}
 }
 
-void BST::printTreeIO(TNode *n) {
-	if (n == NULL) {
+void BST::printTreeIO(TNode *n)
+{
+	if (n == NULL)
+	{
 		return;
-	} else {
+	}
+	else
+	{
 		printTreeIO(n->left);
 		n->printNode();
 		printTreeIO(n->right);
@@ -178,20 +186,81 @@ void BST::printTreePost()
 	}
 }
 
-void BST::printTreePost(TNode *n) {
-	if (n == NULL) {
+void BST::printTreePost(TNode *n)
+{
+	if (n == NULL)
+	{
 		return;
-	} else {
+	}
+	else
+	{
 		printTreePost(n->left);
 		printTreePost(n->right);
 		n->printNode();
 	}
 }
 
- TNode* BST::remove(string s){
+TNode *BST::find(string s)
+{
+	return recursiveFind(root, s);
+}
 
- }
+TNode *BST::recursiveFind(TNode *n, string s)
+{
+	if (n->data->phrase == s)
+	{
+		cout << "the node holding " << s << endl;
+		return n;
+	}
+	if (n->data->phrase < s)
+	{
+		if (n->right != NULL)
+			return recursiveFind(n->right, s);
+	}
+	if (n->data->phrase > s)
+	{
+		if (n->left != NULL)
+			return recursiveFind(n->left, s);
+	}
+	return NULL;
+}
+TNode *BST::remove(string s)
+{
+	TNode *removeNode = find(s);
+	int childrenNum = 0;
+	if (removeNode->left != NULL)
+		childrenNum++;
+	if (removeNode->right != NULL)
+		childrenNum++;
 
+	if (childrenNum == 0)
+		removeNoKids(removeNode);
+}
+TNode* BST::removeOneKid(TNode *tmp, bool leftFlag)
+{
+	TNode *kid = leftFlag ? tmp->left : tmp->right;
+	
+
+	// if (tmp->left == nullptr && tmp->right != nullptr) {
+	// 	leftFlag = false;
+	// 	TNode *tmp = root;
+	// 	root = root->left;
+	// 	delete tmp;
+	// 	tmp = NULL;
+	// } else if (tmp->left != nullptr && tmp->right == nullptr) {
+	// 	TNode *tmp = root;
+	// 	root = root->right;
+	// 	delete tmp;
+	// 	tmp = NULL;
+	// }
+	return tmp;
+}
+
+TNode *BST::removeNoKids(TNode *tmp)
+{
+	delete tmp;
+	return tmp;
+}
 
 // TNode *BST::find(TNode *n, string s);
 // /* Parameter:a string pointer, string
@@ -260,83 +329,4 @@ void BST::printTreePost(TNode *n) {
 //  * node doesn’t change or you hit the root.
 //  */
 
-// bool insert(string s) {
-// 	bool InsertS = false;
-// 	if (n->data == s) {
-// 		InsertS = true;
-// 		return InsertS;
-// 	}
-// 	if (s < n->data) {
-// 		n = n->left;
-// 		if (n->left != nullptr || n->right != nullptr) {
-// 			return insert(s);
-// 		} else {
-// 			n = s;
-// 		}
-// 	}
-// 	if (s > n->data) {
-// 		n = n->right;
-// 		if (n->left != nullptr || n->right != nullptr) {
-// 			return insert(s);
-// 		} else {
-// 			n = s;
-// 		}
-// 	}
-// 	return InsertS;
-// }
 
-// TNode* find(TNode *n, string s) {
-// 	if (n->data == s) {
-// 		cout << "the node holding " << s << endl;
-// 		return n;
-// 	}
-// 	if (n->data < data) {
-// 		if (n->right != NULL)
-// 			return find(n->right, s);
-// 	}
-// 	if (n->data > data) {
-// 		if (n->left != NULL)
-// 			return find(n->left, s);
-// 	}
-// 	return NULL;
-// }
-
-// }
-
-
-
-
-// TNode* remove(string s)
-// {
-// 	if (tmp->left == nullptr && tmp->right == nullptr) {
-// 		*removeNoKids(TNode * tmp);
-// 	} else if (tmp->left == nullptr && tmp->right != nullptr) {
-// 		*removeOneKids(TNode *tmp, bool leftFlag);
-// 	} else if (tmp->left != nullptr && tmp->right == nullptr) {
-// 	*removeOneKids(TNode *tmp, bool leftFlag);
-// 	}
-// }
-
-// TNode* removeNoKids(TNode *tmp)
-// {
-// 	delete tmp;
-// 	return *removeNoKids;
-// }
-
-// TNode* removeOneKids(TNode *tmp, bool leftFlag)
-// {
-// 	leftFlag = true;
-// 	if (tmp->left == nullptr && tmp->right != nullptr) {
-// 		leftFlag = false;
-// 		node *tmp = root;
-// 		root = root->left;
-// 		delete tmp;
-// 		tmp = NULL;
-// 	} else if (tmp->left != nullptr && tmp->right == nullptr) {
-// 		node *tmp = root;
-// 		root = root->right;
-// 		delete tmp;
-// 		tmp = NULL;
-// 	}
-// 	return n;
-// }

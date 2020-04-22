@@ -18,6 +18,7 @@ public:
 	BST(string s);
 	bool insert(string s);
 	TNode *find(string s);
+	TNode* BST::recursiveFind(TNode *n,string s);
 	void printTreeIO();
 	void printTreeIO(TNode *n);
 	void printTreePre();
