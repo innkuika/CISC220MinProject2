@@ -44,21 +44,26 @@ void BST::clearTree(TNode *tmp)
 void BST::setHeight(TNode *n)
 {
 	n->height = 1;
-	int newHeight = 1;
 	while (n->parent != NULL)
 	{
 		n = n->parent;
-		newHeight++;
-		if (newHeight > n->height)
-		{
-			n->height = newHeight;
-		}
-		else
-		{
-			break;
-		}
+		n->height = calcHeight(n);
+	
 	}
 }
+
+int BST::calcHeight(TNode* node)  
+{  
+    if (node == NULL)  
+        return 0;  
+    else
+    {  
+        int leftHeight = calcHeight(node->left);  
+        int rightHeight = calcHeight(node->right);  
+       
+        return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;  
+    }  
+}  
 
 void BST::printTreePre(TNode *n)
 {
@@ -242,8 +247,10 @@ TNode *BST::remove(string s)
 		removeOneKid(removeNode, removeNode->parent->left == removeNode);
 
 	default:
+		setHeight(removeNode);
 		break;
 	}
+	return removeNode;
 }
 TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
 {

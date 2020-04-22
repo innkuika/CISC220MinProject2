@@ -32,6 +32,7 @@ public:
 	TNode *removeTwoKids(TNode *tmp);
 	TNode *remove(string s);
 	void setHeight(TNode *n);
+	int calcHeight(TNode* node);
 };
 
 
