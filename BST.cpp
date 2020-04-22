@@ -233,12 +233,21 @@ TNode *BST::remove(string s)
 	if (removeNode->right != NULL)
 		childrenNum++;
 
-	if (childrenNum == 0)
+	switch (childrenNum)
+	{
+	case 0:
 		removeNoKids(removeNode);
+		break;
+
+	default:
+		break;
+	}
 }
-TNode* BST::removeOneKid(TNode *tmp, bool leftFlag)
+TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
 {
 	TNode *kid = leftFlag ? tmp->left : tmp->right;
+	TNode *parent = tmp->printNode;
+
 	
 
 	// if (tmp->left == nullptr && tmp->right != nullptr) {
@@ -328,5 +337,3 @@ TNode *BST::removeNoKids(TNode *tmp)
 //  * heights of the node’s parent, grandparent, etc. up until either the height of the
 //  * node doesn’t change or you hit the root.
 //  */
-
-
