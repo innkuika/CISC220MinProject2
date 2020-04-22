@@ -36,11 +36,11 @@ int main() {
 	tree->printTreePre();
 	tree->printTreeIO();
 	tree->printTreePost();
-	cout << endl<<"REMOVING IMMORTAL" << endl;
-	tree->remove("immortal");
-	tree->printTreePre();
-	tree->printTreeIO();
-	tree->printTreePost();
+	// cout << endl<<"REMOVING IMMORTAL" << endl;
+	// tree->remove("immortal");
+	// tree->printTreePre();
+	// tree->printTreeIO();
+	// tree->printTreePost();
 	// cout << endl<<"REMOVING WAS" << endl;
 	// tree->remove("was");
 	// tree->printTreePre();

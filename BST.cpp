@@ -287,6 +287,7 @@ TNode *BST::removeTwoKids(TNode *tmp)
 		replace = replace -> right;
 		rightKidExist = true;
 	}
+	TNode *reset = replace -> parent;
 	
 	tmp->parent->left = replace;
 	replace->left = tmp->left;
@@ -295,6 +296,7 @@ TNode *BST::removeTwoKids(TNode *tmp)
 	tmp->parent = NULL;
 	tmp->left = NULL;
 	tmp->right = NULL;
+	setHeight(reset);
 
     // TNode *Node2Kids = new TNode();
     // tmp = tmp->left;
