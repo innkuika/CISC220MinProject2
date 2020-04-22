@@ -238,6 +238,8 @@ TNode *BST::remove(string s)
 	case 0:
 		removeNoKids(removeNode);
 		break;
+	case 1:
+		removeOneKid(removeNode, removeNode->parent->left == removeNode);
 
 	default:
 		break;
@@ -247,6 +249,9 @@ TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
 {
 	TNode *kid = leftFlag ? tmp->left : tmp->right;
 	TNode *parent = tmp->printNode;
+
+	kid->parent = parent;
+	parent->left == tmp ? parent->left = kid : parent->right = kid;
 
 	
 
