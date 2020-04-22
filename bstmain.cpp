@@ -34,9 +34,9 @@ int main() {
 	cout << endl<<"REMOVING DRANK" << endl;
 	tree->remove("drank");
 	tree->printTreePre();
-	// tree->printTreeIO();
-	// tree->printTreePost();
-	// cout << endl<<"REMOVING IMMORTAL" << endl;
+	tree->printTreeIO();
+	tree->printTreePost();
+	cout << endl<<"REMOVING IMMORTAL" << endl;
 	// tree->remove("immortal");
 	// tree->printTreePre();
 	// tree->printTreeIO();

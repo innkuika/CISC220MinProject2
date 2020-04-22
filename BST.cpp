@@ -247,7 +247,6 @@ TNode *BST::remove(string s)
 		removeOneKid(removeNode, removeNode->parent->left == removeNode);
 
 	default:
-		setHeight(removeNode);
 		break;
 	}
 	return removeNode;
@@ -267,6 +266,7 @@ TNode *BST::removeNoKids(TNode *tmp)
 {
 	TNode *parent = tmp->parent;
 	parent->left == tmp ? parent->left = NULL : parent->right = NULL;
+	setHeight(tmp);
 
 	return tmp;
 }
