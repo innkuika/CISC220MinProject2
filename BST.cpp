@@ -42,6 +42,16 @@ void BST::clearTree(TNode *tmp)
 }
 
 void BST::setHeight(TNode *n)
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * This method sets the heights of the nodes in a tree.
+ * Once a node is inserted, only the node’s ancestors can have their height changed.
+ * Thus you should set the height of the node being inserted (to 1) and then adjust the
+ * heights of the node’s parent, grandparent, etc. up until either the height of the
+ * node doesn’t change or you hit the root.
+ */
 {
 	n->height = calcHeight(n);
 	while (n->parent != NULL)
@@ -52,6 +62,12 @@ void BST::setHeight(TNode *n)
 }
 
 int BST::calcHeight(TNode *node)
+/* Parameter:a string pointer
+ *
+ * Return: INT.
+ *
+ * This method is used to calculate the height of each node after each change,
+ */
 {
 	if (node == NULL)
 		return 0;
@@ -65,6 +81,12 @@ int BST::calcHeight(TNode *node)
 }
 
 void BST::printTreePre(TNode *n)
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in pre-order.
+ */
 {
 	if (n == NULL)
 	{
@@ -79,6 +101,12 @@ void BST::printTreePre(TNode *n)
 }
 
 void BST::printTreePre()
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in pre-order.
+ */
 {
 	if (root == NULL)
 	{
@@ -93,14 +121,14 @@ void BST::printTreePre()
 }
 
 bool BST::insert(string s)
-// /* Parameter: string
-//  *
-//  * Return: boolean.
-//  *
-//  * this method takes as an input parameter a string (which will go
-//  * into the phrase field of the data when a node is created to be inserted) and returns
-//  * true if the data is inserted successfully, false otherwise.
-//  */
+ /* Parameter: string
+  *
+  * Return: boolean.
+  *
+  * this method takes as an input parameter a string (which will go
+  * into the phrase field of the data when a node is created to be inserted) and returns
+  * true if the data is inserted successfully, false otherwise.
+  */
 {
 	bool inserted = false;
 	TNode *tmp = root;
@@ -149,6 +177,12 @@ bool BST::insert(string s)
 }
 
 void BST::printTreeIO()
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in order
+ */
 {
 	if (root == NULL)
 	{
@@ -163,6 +197,12 @@ void BST::printTreeIO()
 }
 
 void BST::printTreeIO(TNode *n)
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in order
+ */
 {
 	if (n == NULL)
 	{
@@ -177,6 +217,12 @@ void BST::printTreeIO(TNode *n)
 }
 
 void BST::printTreePost()
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in post-order.
+ */
 {
 	if (root == NULL)
 	{
@@ -191,6 +237,12 @@ void BST::printTreePost()
 }
 
 void BST::printTreePost(TNode *n)
+/* Parameter:a string pointer
+ *
+ * Return: None.
+ *
+ * prints out the data in the tree in post-order.
+ */
 {
 	if (n == NULL)
 	{
@@ -205,11 +257,25 @@ void BST::printTreePost(TNode *n)
 }
 
 TNode *BST::find(string s)
+/* Parameter: string
+ *
+ * Return: a string pointer.
+ *
+ * finds whether s is in the phrase part of the data in the
+ * tree,and, if it is, returns the node holding s. Otherwise it returns NULL.
+ */
 {
 	return recursiveFind(root, s);
 }
 
 TNode *BST::recursiveFind(TNode *n, string s)
+/* Parameter:a string pointer, string
+ *
+ * Return: a string pointer.
+ *
+ * finds whether s is in the phrase part of the data in the
+ * tree,and, if it is, returns the node holding s. Otherwise it returns NULL.
+ */
 {
 	if (n->data->phrase == s)
 	{
@@ -229,6 +295,14 @@ TNode *BST::recursiveFind(TNode *n, string s)
 	return NULL;
 }
 TNode *BST::remove(string s)
+/* Parameter:a string pointer
+ *
+ * Return: a string pointer.
+ *
+ * this method removes a node from the tree, and returns
+ * a string pointer. This function contains three ways to
+ * remove the node which has no children, one child, two children
+ */
 {
 	TNode *removeNode = find(s);
 	int childrenNum = 0;
@@ -255,6 +329,14 @@ TNode *BST::remove(string s)
 	return removeNode;
 }
 TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
+/* Parameter:a string pointer, a boolean
+
+ *
+ * Return: a string pointer.
+ *
+ * for removing a node with one child, with the leftFlag indicating
+ * whether the node’s child is either the left child or the right child.
+ */
 {
 	TNode *kid = tmp->left != NULL ? tmp->left : tmp->right;
 	TNode *parent = tmp->parent;
@@ -268,6 +350,12 @@ TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
 }
 
 TNode *BST::removeNoKids(TNode *tmp)
+/* Parameter:a string pointer
+ *
+ * Return: a string pointer.
+ *
+ * This function is for removing a node with no children.
+ */
 {
 	TNode *parent = tmp->parent;
 	parent->left == tmp ? parent->left = NULL : parent->right = NULL;
@@ -277,6 +365,12 @@ TNode *BST::removeNoKids(TNode *tmp)
 }
 
 TNode *BST::removeTwoKids(TNode *tmp)
+/* Parameter:a string pointer
+ *
+ * Return: a string pointer.
+ *
+ * This function is for removing a node with two children.
+ */
 {
 	TNode *replace = tmp->left;
 	bool rightKidExist = false;
@@ -315,69 +409,4 @@ TNode *BST::removeTwoKids(TNode *tmp)
 	return tmp;
 }
 
-// TNode *BST::find(TNode *n, string s);
-// /* Parameter:a string pointer, string
-//  *
-//  * Return: a string pointer.
-//  *
-//  * finds whether s is in the phrase part of the data in the
-//  * tree,and, if it is, returns the node holding s. Otherwise it returns NULL.
-//  */
-// void BST::printTreeIO(TNode *n);
-// /* Parameter:a string pointer
-//  *
-//  * Return: None.
-//  *
-//  * prints out the data in the tree in order
-//  */
-// void BST::printTreePre(TNode *n);
-// /* Parameter:a string pointer
-//  *
-//  * Return: None.
-//  *
-//  * prints out the data in the tree in pre-order.
-//  */
-// void BST::printTreePost(TNode *n);
-// /* Parameter:a string pointer
-//  *
-//  * Return: None.
-//  *
-//  * prints out the data in the tree in post-order.
-//  */
-// TNode *BST::remove(string s);
-// /* Parameter:a string pointer
-//  *
-//  * Return: a string pointer.
-//  *
-//  * this method removes a node from the tree, and returns
-//  * a string pointer. This function contains three ways to
-//  * remove the node which has no children, one child, two children
-//  */
-// TNode *BST::removeNoKids(TNode *tmp);
-// /* Parameter:a string pointer
-//  *
-//  * Return: a string pointer.
-//  *
-//  * removing a node with no children.
-//  */
-// TNode *BST::removeOneKids(TNode *tmp, bool leftFlag);
-// /* Parameter:a string pointer, a boolean
 
-//  *
-//  * Return: a string pointer.
-//  *
-//  * for removing a node with one child, with the leftFlag indicating
-//  * whether the node’s child is either the left child or the right child.
-//  */
-
-// void BST::setHeight(TNode *n);
-// /* Parameter:a string pointer
-//  *
-//  * Return: None.
-//  *
-//  * This method sets the heights of the nodes in a tree.
-//  * Once a node is inserted, only the node’s ancestors can have their height changed.
-//  * Thus you should set the height of the node being inserted (to 1) and then adjust the
-//  * heights of the node’s parent, grandparent, etc. up until either the height of the
-//  * node doesn’t change or you hit the root.
-//  */
