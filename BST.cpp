@@ -48,22 +48,21 @@ void BST::setHeight(TNode *n)
 	{
 		n = n->parent;
 		n->height = calcHeight(n);
-	
 	}
 }
 
-int BST::calcHeight(TNode* node)  
-{  
-    if (node == NULL)  
-        return 0;  
-    else
-    {  
-        int leftHeight = calcHeight(node->left);  
-        int rightHeight = calcHeight(node->right);  
-       
-        return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;  
-    }  
-}  
+int BST::calcHeight(TNode *node)
+{
+	if (node == NULL)
+		return 0;
+	else
+	{
+		int leftHeight = calcHeight(node->left);
+		int rightHeight = calcHeight(node->right);
+
+		return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+	}
+}
 
 void BST::printTreePre(TNode *n)
 {
@@ -208,7 +207,6 @@ void BST::printTreePost(TNode *n)
 TNode *BST::find(string s)
 {
 	return recursiveFind(root, s);
-	
 }
 
 TNode *BST::recursiveFind(TNode *n, string s)
@@ -260,7 +258,7 @@ TNode *BST::removeOneKid(TNode *tmp, bool leftFlag)
 {
 	TNode *kid = tmp->left != NULL ? tmp->left : tmp->right;
 	TNode *parent = tmp->parent;
-	cout<<tmp->right->data->phrase<<endl;
+	cout << tmp->right->data->phrase << endl;
 
 	kid->parent = parent;
 	leftFlag ? parent->left = kid : parent->right = kid;
@@ -283,35 +281,38 @@ TNode *BST::removeTwoKids(TNode *tmp)
 	TNode *replace = tmp->left;
 	bool rightKidExist = false;
 
-	while(replace->right != NULL){
-		replace = replace -> right;
+	while (replace->right != NULL)
+	{
+		replace = replace->right;
 		rightKidExist = true;
 	}
-	TNode *reset = replace -> parent;
-	
-	tmp->parent->left = replace;
-	replace->left = tmp->left;
+
+	rightKidExist ? replace->parent->right = NULL : replace->parent->left = NULL;
+	replace->parent = NULL;
+	if (tmp->parent != NULL)
+	{
+		tmp->parent->left == tmp ? tmp->parent->left = replace : tmp->parent->right = replace;
+		replace->parent = tmp->parent;
+		tmp->parent = NULL;
+	}
+	else{
+		root = replace;
+	}
+	tmp->right->parent = replace;
+
 	replace->right = tmp->right;
-	rightKidExist ? replace->parent->right = NULL :replace->parent->left = NULL;
-	tmp->parent = NULL;
-	tmp->left = NULL;
 	tmp->right = NULL;
+
+	if (rightKidExist)
+	{
+		tmp->left->parent = replace;
+		replace->left = tmp->left;
+		tmp->left = NULL;
+	}
+
+	TNode *reset = rightKidExist ? replace->parent : replace;
 	setHeight(reset);
-
-    // TNode *Node2Kids = new TNode();
-    // tmp = tmp->left;
-    // while(tmp->right == NULL){
-    //     tmp = tmp->right;
-    // }
-    // Node2Kids = tmp;
-    // removeNoKids(tmp);
-    // Node2Kids->left = tmp->left;
-    // Node2Kids->right = tmp->right;
-    // Node2Kids->parent = tmp->parent;
-    // Node2Kids->height = BST::calcHeight(Node2Kids);
-    // Node2Kids->data->phrase = tmp->data->phrase;
-
-    return tmp;
+	return tmp;
 }
 
 // TNode *BST::find(TNode *n, string s);

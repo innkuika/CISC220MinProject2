@@ -36,22 +36,22 @@ int main() {
 	tree->printTreePre();
 	tree->printTreeIO();
 	tree->printTreePost();
-	// cout << endl<<"REMOVING IMMORTAL" << endl;
-	// tree->remove("immortal");
-	// tree->printTreePre();
-	// tree->printTreeIO();
-	// tree->printTreePost();
-	// cout << endl<<"REMOVING WAS" << endl;
-	// tree->remove("was");
-	// tree->printTreePre();
-	// tree->printTreeIO();
-	// tree->printTreePost();
-	// cout << endl<<"REMOVING I" << endl;
-	// tree->remove("i");
-	// tree->printTreePre();
-	// tree->printTreeIO();
-	// tree->printTreePost();
-	// tree->clearTree();
+	cout << endl<<"REMOVING IMMORTAL" << endl;
+	tree->remove("immortal");
+	tree->printTreePre();
+	tree->printTreeIO();
+	tree->printTreePost();
+	cout << endl<<"REMOVING WAS" << endl;
+	tree->remove("was");
+	tree->printTreePre();
+	tree->printTreeIO();
+	tree->printTreePost();
+	cout << endl<<"REMOVING I" << endl;
+	tree->remove("i");
+	tree->printTreePre();
+	tree->printTreeIO();
+	tree->printTreePost();
+	tree->clearTree();
 	return 0;
 }
 
